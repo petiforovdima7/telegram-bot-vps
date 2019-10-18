@@ -6,12 +6,14 @@
  const token = '918132583:AAHDSdMvNVGah1iO3sr46E7-1k4rJa7313M';
 
  const bot = new TelegramBot(token, {
- 	webHook: {
- 		port: process.env.PORT
- 	}
+	polling: {
+		interval: 300,
+		autoStart: true,
+		params: {
+			timeout: 10
+		}
+	}
  });
- const url = "https://ed.in.ua";
-
  bot.onText(/\/start/, msg => {
  	const chatId = msg.chat.id
  	bot.sendMessage(chatId, 'Привет привет :)')
